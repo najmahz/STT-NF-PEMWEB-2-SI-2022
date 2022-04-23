@@ -51,7 +51,7 @@
                     </div> 
                     <div class="form-group row">
                         <div class="offset-4 col-8">
-                        <button name="proses" type="submit" class="btn btn-primary">Kirim</button>
+                        <input type="submit" value="Simpan" name="proses" class="btn btn-primary">
                         </div>
                     </div>
                 </form>
@@ -69,7 +69,36 @@
             </div>
         </div>
         <hr>
-       
+        <div class="row">
+        <div class="col-auto">
+                <table class="table table-borderless">
+                    <tbody>
+                        <?php
+                            $proses = $_POST['proses'];
+                            $_customer = $_POST['customer'];
+                            $_produk = $_POST['produk'];
+                            $_jumlah = $_POST['jumlah'];
+
+                            if ($_produk == "TV") {
+                                $harga = 4200000; 
+                            } elseif ($_produk == "Kulkas") {
+                                $harga = 3100000; 
+                            } else {
+                                $harga = 3800000; 
+                            }
+
+                            if(!empty($proses)) {
+                                echo "<h5>Data disimpan</h5>";
+                                echo "<tr><td>Nama Customer</td><td>: " . $_customer.'</td></tr>';
+                                echo "<tr><td>Pilihan Produk</td><td>: " . $_produk.'</td></tr>';
+                                echo "<tr><td>Jumlah Beli</td><td>: " . $_jumlah.'</td></tr>';
+                                echo "<tr><td>Total Belanja</td><td>: Rp." . (int)$harga*(int)$_jumlah.'</td></tr>';
+                            }
+                        ?>
+                    </tbody>
+                </table>
+            </div>
+        </div>
         
     </div>
 
